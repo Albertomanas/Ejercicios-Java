@@ -11,7 +11,7 @@ public class Coche {
     private boolean asientos_cuero, climatizador;
 
 
-    public Coche() {
+    public Coche() { //METODO CONSTRUCTOR (ESTABLECER ESTADO INICIAR OBJETO COCHE)
         ruedas = 4;
         largo = 2000;
         ancho = 300;
@@ -39,7 +39,7 @@ public class Coche {
 
     public void configura_asientos(String asientos_cuero){ //SETTER
 
-        if (asientos_cuero=="sí"){
+        if (asientos_cuero.equalsIgnoreCase("Si")){
             this.asientos_cuero = true; // this. hace referencia a la variable de la clase(definida en las propiedades)
         } else {
             this.asientos_cuero = false;
@@ -52,6 +52,46 @@ public class Coche {
         }else {
             return "El coche tiene asientos de serie";
         }
+    }
+
+    public void setClimatizador(String climatizador) { //SETTER
+
+        if (climatizador.equalsIgnoreCase("Si")) {
+
+            this.climatizador = true;
+        }else{
+            this.climatizador = false;
+        }
+    }
+
+    public String getClimatizador() { //GETTER
+
+        if (climatizador == true){
+            return "El coche incorpora climatizador";
+        }else {
+            return "El coche no lleva climatizador";
+        }
+    }
+
+
+   /* public void setPeso_coche() {
+        if (getClimatizador() == "sí") {
+            this.peso_total = this.peso_total + 50;
+        }else {
+            getClimatizador() = this.peso_total;
+        }
+        }
+    */
+    public int precio_coche(){ //GETTER
+        int precio_final = 10000;
+
+        if(asientos_cuero == true){
+            precio_final += 2000;
+        }
+        if (climatizador == true){
+            precio_final += 1500;
+        }
+        return precio_final;
     }
 
 }
